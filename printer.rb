@@ -12,14 +12,19 @@ class Printer
 	end
 	
 	def print
+		print_title
 		print_header
 		print_weeks		
 	end	
 	
 	private
 	
+	def print_title
+		puts calendar.title.center(DAY_IN_WEEK*DAY_WIDTH + DAY_IN_WEEK)
+	end
+	
 	def print_header
-		puts "Mon Tue Wed Thu Fri Sat Sun"
+		puts calendar.header
 	end
 	
 	def print_weeks 
