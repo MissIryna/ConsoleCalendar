@@ -4,6 +4,7 @@ class Printer
 	GREEN_COLOR_CODE = 32
 	DAY_WIDTH = 3
 	DAY_IN_WEEK = 7
+
 	
 	attr_reader :calendar
 	
@@ -30,7 +31,7 @@ class Printer
 	def print_weeks 
 		dates = [nil] * calendar.initial_offset + (1..calendar.month_length).to_a
 		dates.each_slice(DAY_IN_WEEK) do |week|	
-			puts week.map.with_index { |date, i| format_date(date, date == calendar.today_mday, i >= 5) }.join(' ')
+			puts week.map.with_index { |date, i| format_date(date, date == calendar.today_mday, calendar.weekend.include?(i)) }.join(' ')
 		end
 	end
 	
